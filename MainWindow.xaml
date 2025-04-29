@@ -4,9 +4,24 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFMultilanguageNotebook"
+        xmlns:properties="clr-namespace:WPFMultilanguageNotebook.Properties"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="{x:Static properties:Resources.WindowTitle}" Height="450" Width="400"
+        KeyDown="Window_KeyDown">
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="{x:Static properties:Resources.File}">
+                <MenuItem Header="{x:Static properties:Resources.New}" Click="NewFile_Click" InputGestureText="Ctrl+N"/>
+                <MenuItem Header="{x:Static properties:Resources.Open}" Click="OpenFile_Click" InputGestureText="Ctrl+O"/>
+                <MenuItem Header="{x:Static properties:Resources.Save}" Click="SaveFile_Click" InputGestureText="Ctrl+S"/>
+            </MenuItem>
+            <MenuItem Header="{x:Static properties:Resources.Language}">
+                <MenuItem Header="English" Tag="en" Click="LanguageMenu_Click"/>
+                <MenuItem Header="Русский" Tag="ru" Click="LanguageMenu_Click"/>
+            </MenuItem>
+        </Menu>
+        <TextBox Name="MainTextBox" AcceptsReturn="True" AcceptsTab="True"
+                 VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto"
+                 TextWrapping="Wrap" FontSize="14" />
+    </DockPanel>
 </Window>
